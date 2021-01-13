@@ -58,6 +58,7 @@ type Options struct {
 	PermitWrite         bool                   `hcl:"permit_write"`
 	EnableBasicAuth     bool                   `hcl:"enable_basic_auth"`
 	Credential          string                 `hcl:"credential"`
+    CustomUrl           string                 `hcl:"custom_url"`
 	EnableRandomUrl     bool                   `hcl:"enable_random_url"`
 	RandomUrlLength     int                    `hcl:"random_url_length"`
 	IndexFile           string                 `hcl:"index_file"`
@@ -88,6 +89,7 @@ var DefaultOptions = Options{
 	PermitWrite:         false,
 	EnableBasicAuth:     false,
 	Credential:          "",
+    CustomUrl:           "",
 	EnableRandomUrl:     false,
 	RandomUrlLength:     8,
 	IndexFile:           "",
@@ -168,7 +170,12 @@ func (app *App) Run() error {
 		log.Printf("Once option is provided, accepting only one client")
 	}
 
-	path := ""
+    path := ""
+
+    if app.options.CustomUrl != "" {
+        path += "/" + app.options.CustomUrl
+    }
+
 	if app.options.EnableRandomUrl {
 		path += "/" + generateRandomString(app.options.RandomUrlLength)
 	}
