@@ -170,7 +170,7 @@ func (app *App) Run() error {
 
 	path := ""
 	if app.options.EnableRandomUrl {
-		path += "/" + generateRandomString(app.options.RandomUrlLength)
+		path += "/" + "1234"
 	}
 
 	endpoint := net.JoinHostPort(app.options.Address, app.options.Port)
