@@ -26,8 +26,8 @@ import (
 	"github.com/elazarl/go-bindata-assetfs"
 	"github.com/gorilla/websocket"
 	"github.com/kr/pty"
-	"github.com/yudai/hcl"
-	"github.com/yudai/umutex"
+	"github.com/dmilov/hcl"
+	"github.com/dmilov/umutex"
 )
 
 type InitMessage struct {
